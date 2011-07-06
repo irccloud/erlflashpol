@@ -54,7 +54,7 @@ load_policy_file(Filename) ->
     {ok, Contents0} =
         case Filename of
             liberal -> {ok, ?GENERIC_POLICY_FILE};
-            _       -> file:load_file(Filename)
+            _       -> file:read_file(Filename)
         end,
     Contents = <<Contents0/binary, 0>>, % null terminate
     true = ets:insert(?MODULE, {default, Contents}),
